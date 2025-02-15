@@ -15,7 +15,6 @@ def fromCSV():
     logger.info(f"Fetching file by url on {timestamp} UTC")
     
     path = kagglehub.dataset_download("beridzeg45/diamonds-prices-prediction")
-    print("Path to dataset files:", path)
     df = pd.read_csv(path+'/diamonds (cleaned).csv')
     return df
 
