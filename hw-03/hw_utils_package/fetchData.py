@@ -1,3 +1,4 @@
+import requests
 import pandas as pd
 from datetime import datetime
 from datetime import timezone
@@ -8,10 +9,11 @@ logging.basicConfig()
 logger = logging.getLogger(__name__)
 logger.setLevel("INFO")
 
-def fromCSV():
+def fromKaggelhubCSV(kagglehub_path: str, csv_file_name: str):
     timestamp = datetime.now(timezone.utc).strftime("%Y-%m-%d Time %H:%M:%S+00:00")
     logger.info(f"Fetching file by url on {timestamp} UTC")
     
-    path = kagglehub.dataset_download("habedi/developer-salary-survey-data-norway-2024")
-    df = pd.read_csv(path+'/salaries.csv')
+    path = kagglehub.dataset_download(kagglehub_path)
+    df = pd.read_csv(path+'/'+csv_file_name)
     return df
+
